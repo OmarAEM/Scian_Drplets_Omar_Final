@@ -1,0 +1,12 @@
+scikit-image
+shapely
+pandas
+xlsxwriter
+descartes
+tk
+scipy
+matplotlib
+numpy
+opencv-python
+tkinter-tooltip
+datetime
