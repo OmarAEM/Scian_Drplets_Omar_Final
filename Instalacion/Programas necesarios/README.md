@@ -1,6 +1,6 @@
 ## Instalacion Python
 
-Paso 1: Dirijase al siguiente link https://www.python.org/downloads/ para instalar Python.
+Paso 1: Dirijase al siguiente link https://www.python.org/downloads/ para instalar Python. 
 
 Paso 2: Para realizar la instalalacion de Python debe apretar el boton "Download Python 3.11.4", si el numero cambia esto es producto de una nueva version de python por lo que no debe preocuparse si esto ocurre. Una vez apretado el boton, aparecera descargado en la esquina inferior izquierda un archivo con la terminacion ".exe", aprete este archivo.
 ![Captura de pantalla 2023-07-19 025958](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/40cd133a-21a8-475d-8bb1-8f47c3176442)
