@@ -25,7 +25,8 @@ Paso 4: Al lado izquierdo podra visualizar todos los archivos que contiene la ca
 ![Captura de pantalla 2023-07-20 141231](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/efe15f89-416b-4abb-ac35-cce83b5d425f)
 
 
-Paso 5: Ya con el archivo abierto, seleccione el icono en el cuadrado rojo de la imagen que se encuantra en la columna a la izquierda  y luego aprete "Run and Debug"
+Paso 5: Ya con el archivo abierto, seleccione el icono en el cuadrado rojo de la imagen que se encuentra en la columna a la izquierda  y luego aprete "Run and Debug"
+
 ![Captura de pantalla 2023-07-19 030938](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/9fa36604-9052-4386-bdf6-8a5807b7a2a0)
 
 
