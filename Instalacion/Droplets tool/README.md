@@ -17,6 +17,7 @@ Paso 2: Busque y seleccione la carpeta que se extrajo del archivo zip descargado
 ![Captura de pantalla 2023-07-19 030741](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/9166fd62-3128-4cfc-88b2-cf4737db64c0)
 
 Paso 3: Aprete "Yes, I trust the authors"
+
 ![Captura de pantalla 2023-07-19 030806](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/3d9aaa22-58da-452f-825d-bd2cffa751ba)
 
 Paso 4: Seleccione el icono que se encuentra en el cuadrado rojo, como se muestra en la siguiente imagen, luego el buscador (primer rectangulo verde escriba "Python" (sin comillas) y luego aprete "Install" en la opcion que se muestra en la imagen
