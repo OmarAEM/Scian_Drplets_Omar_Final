@@ -36,7 +36,7 @@ Paso 5.1: La primera vez que realice el paso 5, aparecera la siguiente captura e
 ![Captura de pantalla 2023-07-19 031000](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/15563407-ba37-40d5-a831-fcb15600d0c2)
 
 
-Paso 6: Luego del paso 5 o 5.1 segun el caso, aparecera la interfaz donde debe ingresar la densidad de la gota, la densidad del medio y el diametro de la aguja en [G]. Una vez introducido estos 3 valores, debe apretar el boton "Open Image"
+Paso 6: Luego del paso 5 o 5.1 segun el caso, aparecera la interfaz donde debe ingresar la densidad de la gota, la densidad del medio y el diametro de la aguja en [G]. Una vez introducido estos 3 valores, debe apretar el boton "Load Image"
 ![Captura de pantalla 2023-07-20 142858](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/b0ee977c-f010-46a5-81ff-5391d1f3fb5a)
 
 Paso 7: Una vez apretado el boton mencionado en el paso anterior, dirijase a la carpeta donde esten guardados sus imagenes de gotas colgantes, seleccione la imagen con la que desee trabajar y aprete el boton "Abrir"
