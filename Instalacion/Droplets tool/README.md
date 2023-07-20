@@ -1,5 +1,5 @@
 ## Descarga de Droplets tool
-Para descargar el programa Droplets tool dirijase a [https://github.com/OmarAEM/Scian-Droplets-Omar](https://github.com/OmarAEM/Scian_Drplets_Omar_Final), una vez en la pagina, apretar el boton "Code" y posteriormente "Download ZIP", abrir archivo zip y extraer la carpeta "Scian-Droplets-Omar-main" en su computador (puede ser en el escritorio o en una carpeta que tenga destinada para trabajar con droplets)
+Para descargar el programa Droplets tool dirijase a [https://github.com/OmarAEM/Scian-Droplets-Omar](https://github.com/OmarAEM/Scian_Drplets_Omar_Final), una vez en la pagina, apretar el boton "Code" y posteriormente "Download ZIP", abrir archivo zip y extraer la carpeta "Scian-Drplets-Omar-main" en su computador (puede ser en el escritorio o en una carpeta que tenga destinada para trabajar con droplets)
 ![Captura de pantalla 2023-07-19 083959](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/fa314afb-5869-4b82-8ce8-cd6e03ee744d).
 
 ## Creacion carpetas de uso
