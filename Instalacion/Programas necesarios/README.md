@@ -55,10 +55,4 @@ Paso 6: En la siguiente ventana aprete "Instalar".
 Paso 7: Finalmente aparece la ultima ventana en la cual debera verificar que no este seleccionado "Ejecutar Visual Studio Code" y luego apretar el boton "Finalizar".
 ![vs6](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/83e40a2f-cc82-4314-9ca9-99f499925180)
 
-## Instalacion de librerias necesarias
-
-Paso 1: Abrir programa Visual Studio Code, seleccione el icono que se encuentra en el cuadrado rojo, como se muestra en la siguiente imagen, luego el buscador (primer rectangulo verde escriba "Python" (sin comillas) y luego aprete "Install" en la opcion que se muestra en la imagen
-![vspython](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/f5669a77-08ed-41c2-a0ec-fec33b8277ad)
-
-Paso 2:
 
