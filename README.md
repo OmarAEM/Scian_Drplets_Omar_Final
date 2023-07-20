@@ -1,4 +1,12 @@
 # Scian_Droplets_Omar_Final
+## Instalacion de Droplets tool
+Para poder instalar Droplets tool debe dirigirse a la carpeta Instalacion de este repositorio (https://github.com/OmarAEM/Scian_Drplets_Omar_Final/tree/main/Instalacion).
+
+En la carpeta Instalacion encontrara dos carpetas:
+
+Programas necesarios: en esta carpeta se encontrara el paso a paso de instalacion de Python y Visual Studio Code, debido a que estos programas son los necesarios para ejecutar Droplets tool. Si ya posee instalado estos programas, omita esta instalaciones.
+
+Droplets tool: en esta carpeta se encontrara como descargar Droplets tool, que carpetas va a necesitar para guardado de imagenes de gotas y la instalacion de librerias necesarias para poder ejecutar Droplets tool (si en este ultimo apartado se generan errores, se recomienda desinstalar e instalar nuevamente Python y Visual Studio Code).
 
 ## Ejecucion programa Droplets tool
 PASO 1: Abrir programa Visual Studio Code, seleccione el boton "File" en la parte superior izquierda y luego seleccione "Open Folder..."
@@ -11,36 +19,55 @@ jo del archivo zip descargado del repositorio en Github, una vez ya seleccionada
 
 Paso 3: Aprete "Yes, I trust the authors"
 
-![Captura de pantalla 2023-07-19 030806](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/8aa5dbc3-1e89-4356-aa61-350b9bbf93b2)
+![Captura de pantalla 2023-07-19 030806](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/d6b83ed8-0bde-4570-ada3-2af112b83282)
+
 
 Paso 4: Al lado izquierdo podra visualizar todos los archivos que contiene la carpeta seleccionada anteriormente y una vez identificado, realice doble click sobre el archivo "Droplets.py"
-![Captura de pantalla 2023-07-19 034004](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/51952393-ec0b-42f0-b7bf-66b1b02aa51b)
+![Captura de pantalla 2023-07-20 141231](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/efe15f89-416b-4abb-ac35-cce83b5d425f)
 
-Paso 5: Ya con el archivo abierto, seleccione el cuarto icono de la columna a la izquierda (aquel que posee una linea azul a su costado) y luego aprete "Run and Debug"
 
-![Captura de pantalla 2023-07-19 030938](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/df0085af-9292-4137-81dd-a8190c4e6ad6)
+Paso 5: Ya con el archivo abierto, seleccione el icono en el cuadrado rojo de la imagen que se encuantra en la columna a la izquierda  y luego aprete "Run and Debug"
+![Captura de pantalla 2023-07-19 030938](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/9fa36604-9052-4386-bdf6-8a5807b7a2a0)
+
+
+
 
 Paso 5.1: La primera vez que realice el paso 5, aparecera la siguiente captura en la cual usted debe seleccionar "Python File"
-![Captura de pantalla 2023-07-19 031000](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/ed028550-0c72-49a6-9df8-cb34591e8f2a)
+![Captura de pantalla 2023-07-19 031000](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/15563407-ba37-40d5-a831-fcb15600d0c2)
+
 
 Paso 6: Luego del paso 5 o 5.1 segun el caso, aparecera la interfaz donde debe ingresar la densidad de la gota, la densidad del medio y el diametro de la aguja en [G]. Una vez introducido estos 3 valores, debe apretar el boton "Open Image"
-![Captura de pantalla 2023-07-19 031252](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/06964daa-3753-40c5-b3a0-82690a5c485d)
+![Captura de pantalla 2023-07-20 142858](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/b0ee977c-f010-46a5-81ff-5391d1f3fb5a)
 
 Paso 7: Una vez apretado el boton mencionado en el paso anterior, dirijase a la carpeta donde esten guardados sus imagenes de gotas colgantes, seleccione la imagen con la que desee trabajar y aprete el boton "Abrir"
-![Captura de pantalla 2023-07-19 031313](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/9b917770-2438-4b2b-92b0-e026cfee7220)
+![Captura de pantalla 2023-07-19 031313](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/ac2af28e-97cd-4f5d-acb3-7cddb668ba19)
+
 
 Paso 8: Una vez abierta la imagen, primero debera seleccionar el area donde este la gota, para esto debera generar un rectangulo/cuadrado el cual contenga toda la gota; por lo que primero dirija su mouse al extremo superior izquierdo (imaginando que creara un rectangulo) haga click y mantenga apretado el boton del mouse en ese punto y luego mueva su mouse hasta la esquina inferior derecha para concretar el rectangulo, una vez llegado a ese punto debe de apretar el boton del mouse. Cuando ya finalice la accion antes mencionada, aprete el boton "Enter" de su teclado.
-![Captura de pantalla 2023-07-19 031339](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/076c6a6f-5eab-4b4e-9402-51fae62a85c8)
+![Captura de pantalla 2023-07-19 031339](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/e572cdbe-25b0-4fd4-91bf-5edc64a98fbf)
+
 
 Paso 9: Ahora aparecera nuevamente la imagen de la gota, repita el paso 8, pero en esta ocasion seleccione el area de la aguja.
-![Captura de pantalla 2023-07-19 031402](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/9d95e7be-12ee-452e-b2c3-a49c87c42b91)
+![Captura de pantalla 2023-07-19 031402](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/bc1c3b5b-3561-4e6f-8704-cd30b86fd493)
+
 
 Paso 10: Una vez finalizado el paso 9, aparecera nuevamente la interfaz del paso 6, en esta ocasion cierre la ventana con la cruz de la esquina superior derecha
 
-![Captura de pantalla 2023-07-19 031252](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/06964daa-3753-40c5-b3a0-82690a5c485d)
+![Captura de pantalla 2023-07-20 142858](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/097810a0-5ae5-4754-aa0d-c2d9a82c7371)
+
 
 Paso 11: Ahora podra ver en la terminal (seccion de abajo de la captura de imagen) que se esta indicando que se esta realizando la deteccion de borde de la gota indicando en que proceso esta, una vez finalizado ese proceso, se indica los parametros finales asociados a la tension superficial
-![Captura de pantalla 2023-07-19 034058](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/72cd7015-513f-42d0-bf22-27695193b46c)
+![Captura de pantalla 2023-07-19 034058](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/e6c8c5fa-c532-422e-b97e-ea91c55ab93f)
 
-Paso 12: Si lo desea puede dirijirse a la carpeta "Resultados" que se creo en un comienzo en su carpeta donde guardara la imagenes de la gota; y dentro de esta carpeta podra encontrar todas las imagenes de gotas analizadas y tendran como nombre su tension superficial calculada.
-![Captura de pantalla 2023-07-19 041508](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/b11840b5-58ce-48de-bad8-9188e1c39bcb)
+
+Paso 12: Si lo desea puede dirigirse a la carpeta "Resultados" que se creo en un comienzo en su carpeta donde guardara la imagenes de la gota; y dentro de esta carpeta podra encontrar todas las imagenes de gotas analizadas y nombre de archivo tiene como formato date_AÑO_MES_DIA__hour_HORA_MINUTO_SEGUNDO.
+![Captura de pantalla 2023-07-20 141913](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/c9d77ce1-a927-4502-96c1-3e7fb87befca)
+
+Si usted abre la imagen en esta se encontrara informacion de la gota las cuales corresponden a su tension superficial, numero de Bond, numero de Worthington, Parametro de forma y R_O (circunferencia asociada al gota)
+![Captura de pantalla 2023-07-20 142237](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/f160398b-dbbe-4014-aa2e-426aa1916027)
+
+PROXIMAMENTE
+Aun hay que hacer algunos cambiamos de nomenclatura en el nombre de guardado de imagen, como la de incluir nombre de imagen original.
+Visualizacion del contorno de la gota detectado y circunferencia+R_0 para realizar procesamiento interno.
+
+
