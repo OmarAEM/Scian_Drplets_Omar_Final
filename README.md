@@ -63,11 +63,13 @@ Paso 11: Ahora podra ver en la terminal (seccion de abajo de la captura de image
 Paso 12: Si lo desea puede dirigirse a la carpeta "Resultados" que se creo en un comienzo en su carpeta donde guardara la imagenes de la gota; y dentro de esta carpeta podra encontrar todas las imagenes de gotas analizadas y nombre de archivo tiene como formato date_AÑO_MES_DIA__hour_HORA_MINUTO_SEGUNDO.
 ![Captura de pantalla 2023-07-20 141913](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/c9d77ce1-a927-4502-96c1-3e7fb87befca)
 
-Si usted abre la imagen en esta se encontrara informacion de la gota las cuales corresponden a su tension superficial, numero de Bond, numero de Worthington, Parametro de forma y R_O (circunferencia asociada al gota)
+Si usted abre la imagen en esta se encontrara informacion de la gota las cuales corresponden a su tension superficial, numero de Bond, numero de Worthington, Parametro de forma y R_O (circunferencia asociada al gota). El numero de Worthington y el parametro de forma corresponden a valores entre 0 y 1 que nos permiten identificar que tan buena es la gota, esto quiere decir que tan acorde es la gota utilizada para determinar su tension superficial.
 ![Captura de pantalla 2023-07-20 142237](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/f160398b-dbbe-4014-aa2e-426aa1916027)
 
 PROXIMAMENTE
 Aun hay que hacer algunos cambiamos de nomenclatura en el nombre de guardado de imagen, como la de incluir nombre de imagen original.
-Visualizacion del contorno de la gota detectado y circunferencia+R_0 para realizar procesamiento interno.
+Visualizacion del contorno de la gota detectado y circunferencia+R_0 para realizar procesamiento interno.}
+Mejor explicacion de los todos los valores indicados en la imagen final.
+Me di cuenta que debo arreglar el numero de Worthington debido a que no esta entregando valores acordes.
 
 
