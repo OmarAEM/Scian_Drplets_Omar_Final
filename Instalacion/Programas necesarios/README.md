@@ -24,3 +24,41 @@ Paso 5: Finalmente aparece la ultima ventana en la cual debera apretar el boton 
 
 Con estos pasos ya tiene instalado Python.
 
+## Instalacion Visual Studio Code
+
+Paso 1: Dirijase al siguiente link https://code.visualstudio.com/download para instalar Visual Studio Code.
+![Captura de pantalla 2023-07-19 082044](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/365b32ae-8caf-48d8-8ea1-0ff0b8344c90)
+
+Paso 2: Para realizar la instalalacion de Visual Studio Code debe apretar el boton "Windows" en donde indica la version 8, 10 y 11. Una vez apretado el boton, aparecera descargado en la esquina inferior izquierda un archivo con la terminacion ".exe", aprete este archivo.
+
+Paso 3: Una vez abierto el archivo le aparecera la siguiente ventana, debera seleccionar la opcion "Acepto el acuerdo" y luego apretar "Siguiente".
+
+![vs1](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/2f602ede-144e-450a-bf6c-b418b709ab8e)
+
+Paso 4: En la siguiente ventana verifique que no este seleccionado "No crear una carpeta en el Menú Inicio" y luego aprete "Siguiente".
+
+![vs3](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/70768bae-76d0-4594-b33e-832b1b866536)
+
+Paso 5: En la siguiente ventana verifique que solamente esten selecionados las siguientes opciones:
+
+* Crear un acceso directo en el escritorio
+
+* Registrar Code como editor para tipos de archivo admitidos
+
+* Agregar a PATH (disponible después de reiniciar)
+Luego aprete el boton "Siguiente"
+![vs4](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/54d63b80-0a27-41e6-b2b9-17e47ae92093)
+
+Paso 6: En la siguiente ventana aprete "Instalar".
+![vs5](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/10d3be77-f533-4258-90c8-29c0492714d3)
+
+Paso 7: Finalmente aparece la ultima ventana en la cual debera verificar que no este seleccionado "Ejecutar Visual Studio Code" y luego apretar el boton "Finalizar".
+![vs6](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/83e40a2f-cc82-4314-9ca9-99f499925180)
+
+## Instalacion de librerias necesarias
+
+Paso 1: Abrir programa Visual Studio Code, seleccione el icono que se encuentra en el cuadrado rojo, como se muestra en la siguiente imagen, luego el buscador (primer rectangulo verde escriba "Python" (sin comillas) y luego aprete "Install" en la opcion que se muestra en la imagen
+![vspython](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/f5669a77-08ed-41c2-a0ec-fec33b8277ad)
+
+Paso 2:
+
