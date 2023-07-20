@@ -7,17 +7,19 @@ Paso 2: Para realizar la instalalacion de Python debe apretar el boton "Download
 
 Paso 3: Una vez abierto el archivo le aparecera la siguiente ventana, debera verificar que esten seleccionados:
 
-Use admin privileges when installing py.exe
+*Use admin privileges when installing py.exe
 
-Add python.exe to PATH
+*Add python.exe to PATH
 
 Una vez verificadas las selecciones, debera apretar "Install Now".
 ![python](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/99d43332-eaa1-4489-b27b-8597f35adac6)
 
-Paso 4: Espere a que se lleve a cabo la instalacion.
+Paso 4: A continuacion debera aparecer la siguiente ventana, en la cual debera esperar a que se llene la barra.
+
 ![python2](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/21894a1c-834a-4d5a-9624-2cfb84bd2871)
 
-Paso 5: Aprete el boton "Close".
+Paso 5: Finalmente aparece la ultima ventana en la cual debera apretar el boton "Close".
+
 ![python3](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/61f38f87-af6c-422f-b884-e4a588399cda)
 
 Con estos pasos ya tiene instalado Python.
