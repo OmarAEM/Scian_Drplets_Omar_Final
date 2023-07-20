@@ -1,44 +1,13 @@
 # Scian_Droplets_Omar_Final
-## 1. Descarga e instalacion de programas (si es que no los tiene)
-Instalar Python desde https://www.python.org/downloads/
-![Python](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/c98f0065-2bd2-4fa8-9da6-79e1b781836a)
 
-Instalar Visual Studio Code desde https://code.visualstudio.com/download
-![Vscode](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/54594746-a6f4-448a-b3e1-08244c00b94e)
-
-Instalar librerias necesarias
-Para poder instalar las librerias necesarias, dirijase al buscador de windows y escriba "cmd", luego abra el programa "Simbolos del sistema" y buscar ruta donde se encuentra instalado python
-![Captura de pantalla 2023-07-19 082558](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/0fa25398-823b-44ca-853a-62d4e9661b35)
-
-Ahora se debe buscar la ruta donde se encuentra instalado python
-![instalar_librerias](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/d867520c-2e19-48be-949b-3f945e93fd0a)
-Para las librerias se debe escribir y apretar enter cada vez que se escriba un pip install
-pip install opencv-python
-
-pip install scikit-image
-
-pip install shapely
-
-pip install pandas
-
-pip install xlsxwriter
-
-pip install descartes
-
-## 2. Creacion de carpetas a utilizar
-Primero hay que descargar el programa Droplets desde https://github.com/OmarAEM/Scian-Droplets-Omar, una vez en la pagina, apretar el boton "Code" y posteriormente "Download ZIP", abrir archivo zip y extraer la carpeta "Scian-Droplets-Omar-main" en su computador (puede ser en el escritorio o en una carpeta que tenga destinada para trabajar con droplets
-![Captura de pantalla 2023-07-19 083959](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/0386a760-6c28-4248-9035-fd2a10b13363)
-
-Lo segundo es crear una carpeta donde guardara las imagenes de las gotas (si ya posee una omita esta parte), en el lugar que mas le acomode en su computador.
-Luego cree una carpeta "Resultados" dentro de la carpeta donde guarda la imagenes, esta carpeta se utilizara para registrar los resultados obtenidos al calcular la tensio interfacial.
-
-
-## 3. Ejecutar programa Droplets
+## Ejecucion programa Droplets tool
 PASO 1: Abrir programa Visual Studio Code, seleccione el boton "File" en la parte superior izquierda y luego seleccione "Open Folder..."
-![Captura de pantalla 2023-07-19 030624](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/06716bbe-9910-48c5-8b87-84418970192d)
+![Captura de pantalla 2023-07-19 030624](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/94a6fc4d-ce74-4a26-98d8-88a06c5b41c3)
 
-Paso 2: Busque y seleccione la carpeta que se extrajo del archivo zip descargado del repositorio en Github, una vez ya seleccionada la carpeta, aprete el boton "Seleecionar carpeta"
-![Captura de pantalla 2023-07-19 030741](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/ab5123bc-4a5e-481b-bfc6-51ab478faa5f)
+Paso 2: Busque y seleccione la carpeta que se extra
+jo del archivo zip descargado del repositorio en Github, una vez ya seleccionada la carpeta, aprete el boton "Seleecionar carpeta"
+![Captura de pantalla 2023-07-19 030741](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/4f383511-9144-43cd-a6f0-a9835ca954a0)
+
 
 Paso 3: Aprete "Yes, I trust the authors"
 
