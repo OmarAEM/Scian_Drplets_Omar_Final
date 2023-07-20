@@ -65,4 +65,4 @@ Paso 7: Finalmente aparece la ultima ventana en la cual debera verificar que no 
 
 ![vs6](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/a89e00c2-3520-4abf-b3c3-2b5d50a6294b)
 
-
+Con estos pasos ya tiene instalado Visual Studio Code.
