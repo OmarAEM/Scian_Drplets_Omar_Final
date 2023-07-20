@@ -6,7 +6,7 @@ En la carpeta Instalacion encontrara dos carpetas:
 
 Programas necesarios: en esta carpeta se encontrara el paso a paso de instalacion de Python y Visual Studio Code, debido a que estos programas son los necesarios para ejecutar Droplets tool. Si ya posee instalado estos programas, omita esta instalaciones.
 
-Droplets tool: en esta carpeta se encontrara como descargar Droplets tool, que carpetas va a necesitar para guardado de imagenes de gotas y la instalacion de librerias necesarias para poder ejecutar Droplets tool (si en este ultimo apartado se generan errores, se recomienda desinstalar e instalar nuevamente Python y Visual Studio Code).
+Droplets tool: en esta carpeta se encontrara como descargar Droplets tool, que carpetas va a necesitar para guardado de imagenes de gotas y la instalacion de librerias necesarias para poder ejecutar Droplets tool (si en este ultimo apartado se generan errores, se recomienda desinstalar e instalar nuevamente Python y Visual Studio Code como encuentra en el paso a paso disponible en Programas necesarios).
 
 ## Ejecucion programa Droplets tool
 PASO 1: Abrir programa Visual Studio Code, seleccione el boton "File" en la parte superior izquierda y luego seleccione "Open Folder..."
