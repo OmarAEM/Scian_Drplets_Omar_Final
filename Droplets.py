@@ -4,4 +4,4 @@ import GeometricFunction
 Coordenadas = GInterface.mainWindow()
 
 GeometricFunction.Method(Coordenadas)
-
+#
