@@ -5,4 +5,4 @@ Coordenadas = GInterface.mainWindow()
 
 GeometricFunction.Method(Coordenadas)
 
-#hola
+#hola2
