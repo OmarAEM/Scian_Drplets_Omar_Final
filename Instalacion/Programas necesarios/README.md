@@ -60,8 +60,10 @@ Paso 6: En la siguiente ventana aprete "Instalar".
 
 ![vs5](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/94cd620a-0043-4039-a503-cb889247315c)
 
+Paso 7: A continuacion debera aparecer la siguiente ventana, en la cual debera esperar a que se llene la barra.
+![vs8](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/a7b6a286-5975-43a7-a28f-0881c0fbab82)
 
-Paso 7: Finalmente aparece la ultima ventana en la cual debera verificar que no este seleccionado "Ejecutar Visual Studio Code" y luego apretar el boton "Finalizar".
+Paso 8: Finalmente aparece la ultima ventana en la cual debera verificar que no este seleccionado "Ejecutar Visual Studio Code" y luego apretar el boton "Finalizar".
 
 ![vs6](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/a89e00c2-3520-4abf-b3c3-2b5d50a6294b)
 
