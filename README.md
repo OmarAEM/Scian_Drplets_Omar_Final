@@ -12,8 +12,10 @@ Droplets tool: en esta carpeta se encontrara como descargar Droplets tool, que c
 Paso 1: Abrir programa Visual Studio Code, seleccione el boton "File" en la parte superior izquierda y luego seleccione "Open Folder..."
 ![Captura de pantalla 2023-07-19 030624](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/94a6fc4d-ce74-4a26-98d8-88a06c5b41c3)
 
-Paso 2: Busque y seleccione la carpeta que se extrajo del archivo zip descargado del repositorio en Github, una vez ya seleccionada la carpeta, aprete el boton "Seleecionar carpeta"
-![Captura de pantalla 2023-07-19 030741](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/4f383511-9144-43cd-a6f0-a9835ca954a0)
+Paso 2: Busque y seleccione la carpeta que se descargo con anterioridad (Recordar que el nombre de la carpeta descarga es "Scian_Drplets_Omar_Final"), una vez ya seleccionada la carpeta, aprete el boton "Selecionar carpeta".
+
+<img width="565" alt="Captura de pantalla 2023-07-23 204403" src="https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/f16387ba-47c3-4d0a-8a65-0f6b67099326">
+
 
 
 Paso 3: Al lado izquierdo podra visualizar todos los archivos que contiene la carpeta seleccionada anteriormente y una vez identificado, realice doble click sobre el archivo "Droplets.py"
