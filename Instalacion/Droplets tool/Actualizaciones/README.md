@@ -1,3 +1,7 @@
+## Informacion sobre las versiones de Droplets
+En la carpeta "Versiones" se encontrara todal las funcionalidades añadidas y arreglos de bugs en cada version creada para Droplets tool.
+
+## Actualizacion de Droplets tool
 Paso 1: Abrir programa Visual Studio Code, seleccione el boton "File" en la parte superior izquierda y luego seleccione "Open Folder..."
 ![Captura de pantalla 2023-07-19 030624](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/94a6fc4d-ce74-4a26-98d8-88a06c5b41c3)
 
