@@ -11,7 +11,7 @@ Paso 3: Al lado izquierdo podra visualizar todos los archivos que contiene la ca
 ![Captura de pantalla 2023-07-20 141231](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/efe15f89-416b-4abb-ac35-cce83b5d425f)
 
 
-Paso 4: Seleccione la tercera figura de la columna que se encuentra a la izquierda (como se ve en las imagenes de a continuacion), si al seleccionar este icono se despliega una ventana la cual se encuentra vacia (como en la imagen de la izquierda) salte hasta el paso , sin embargo si al desplegarse la ventana aparecen distintos archivos debera realizar todos los pasos de esta seccion.
+Paso 4: Seleccione la tercera figura de la columna que se encuentra a la izquierda (como se ve en las imagenes de a continuacion), si al seleccionar este icono se despliega una ventana la cual se encuentra vacia (como en la imagen de la izquierda) salte hasta el paso 8, sin embargo si al desplegarse la ventana aparecen distintos archivos debera realizar todos los pasos de esta seccion.
 ![actualizacion0](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/43576fe3-a208-4067-931e-0d3151fa6e9b) ![actualizacion](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/63b62a10-5453-4767-adf9-f13c8833f283)
 
 Paso 5: Realice click derecho sobre "Changes" y seleccione "Discard all changes".
