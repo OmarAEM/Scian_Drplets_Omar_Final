@@ -8,6 +8,6 @@ scipy
 matplotlib
 numpy
 opencv-python
-tkinter-tooltip
 datetime
+tkinter-tooltip
 python-csv
