@@ -31,6 +31,7 @@ import pandas as pd
 import xlsxwriter
 import GInterface
 from datetime import datetime
+from csv import writer
 
 #Ejecucion de la interfaz para obtener parametros iniciales de la gota
 #Coordenadas = GInterface.mainWindow()
@@ -901,13 +902,13 @@ class Method:
         fontScale = 1
         color = (255, 0, 0)
         thickness = 2
-        gamma=GammaValues[0]
-        stdgamma=GammaValues[1]
-        bond=GammaValues[3]
-        wort=Worthington_Number
-        shape_pam=Shape_parameter
-        R_0=GammaValues[2]*ratio
-        parameters=["Tension superficial: "+str(round(gamma,3))+" +/- "+str(round(stdgamma,3))+" [N/m]","Numero de Bond: "+str(round(bond,3)),"Numero worht: "+str(round(wort,3)),"Parametro de forma: "+str(round(shape_pam,3)),"R_0: "+str(round(R_0,3))+" [m]"]
+        gamma=round(GammaValues[0],3)
+        stdgamma=round(GammaValues[1],3)
+        bond=round(GammaValues[3],3)
+        wort=round(Worthington_Number,3)
+        shape_pam=round(Shape_parameter,3)
+        R_0=round(GammaValues[2]*ratio,3)
+        parameters=["Tension superficial: "+str(gamma)+" +/- "+str(stdgamma)+" [N/m]","Numero de Bond: "+str(bond),"Numero worht: "+str(wort),"Parametro de forma: "+str(shape_pam),"R_0: "+str(R_0)+" [m]"]
         
         j=len(parameters)-1
         for i in range(20,141,30):
@@ -918,12 +919,29 @@ class Method:
         now=datetime.now()
         date="date_"+str(now.year)+"_"+str(now.month)+"_"+str(now.day)+"__hour_"+str(now.hour)+"_"+str(now.minute)+"_"+str(now.second)
 
+        date2=str(now.year)+"_"+str(now.month)+"_"+str(now.day)
+        hour=str(now.hour)+":"+str(now.minute)+":"+str(now.second)
+
         #Guardo informacion de la imagen junto a su tension superficial en la carpeta resultados
         total_folder = 0
         dir = folder+"/Resultados/"
         for path in os.listdir(dir):
             if os.path.isfile(os.path.join(dir, path)):
                 total_folder += 1
+
+        if total_folder == 0:
+            d = {"Fecha":[date2],"Hora":[hour],'Tension superficial': [gamma], 'error tension': [stdgamma],"Numero de Bond": [bond], "Numero worht: ":[wort],"Parametro de forma: ":[shape_pam],"R_0: ":[R_0]}
+            df = pd.DataFrame(data=d)
+            df.to_csv(folder+'/Resultados/Result.csv')
+        if total_folder != 0:
+                df2=pd.read_csv(folder+'/Resultados/Result.csv')
+                index=df2.shape[0]
+                list_data=[index,date2,hour,gamma,stdgamma,bond,wort,shape_pam,R_0]
+                with open(folder+'/Resultados/Result.csv', 'a', newline='') as f_object:  
+                    # Pass the CSV  file object to the writer() function
+                    writer_object = writer(f_object)
+                    writer_object.writerow(list_data)  
+                    f_object.close()
         save_Gamma=folder+"/Resultados/"+date+".png"
                 
         cv2.imwrite(save_Gamma,image_output)
