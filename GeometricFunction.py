@@ -94,7 +94,9 @@ class Method:
           
         #La imagen de la gota se debe trabajar en escala de grises 
         image = imag
+        image_output2=image.copy()
         GrayImage=  cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        
         image_output=GrayImage.copy()
         #print("-------------------------------------------------------------")
         #print("Image Properties:")
@@ -194,6 +196,8 @@ class Method:
             GrayImage[iy_d+10][i] = 255
 
         edges =filterImage(GrayImage)
+
+        edges_output = filterImage(image_output)
 
 
         def showing(img,string):
@@ -519,8 +523,27 @@ class Method:
         edges_2 =filterImage(GrayImage_2)        
         apex = getApex(size_y,Ncenter,NeedleArray,edges_2,needleArea,dropArea)
 
-        #print("apex position",apex[1])
-        #print("apex position",apex[0])
+        print("apex position",apex[1])
+        print("apex position",apex[0])
+
+
+        def surface_drop(surface,DropArea):
+            dix=dropArea[0]  # drop inicial x
+            diy=dropArea[1]  # drop inicial y
+            dfx=dropArea[2]  # drop final   x
+            dfy=dropArea[3]
+
+            points=[]
+
+            for i in range(dix,dfx):
+                for j in range(diy, dfy):
+
+                    if surface[j,i] == 255:         # coordenadas pertenecientes a la superficie de la gota
+                                        
+                                np.array([points.append([i,j])])
+            return points
+
+        drop_points=surface_drop(edges_output,dropArea)
 
 
 
@@ -762,6 +785,8 @@ class Method:
                     Rvalues = []
                     centers = []
                     Rvalues2 = []
+                    Xc_values = []
+                    Yc_values = []
                     
                     
                     for i in range(0,RangeSize,1):
@@ -822,9 +847,13 @@ class Method:
                         
                             residu_2 = np.sum((Ri_2-R_2)**2)
                             np.array(Rvalues.append([R_2]))
+                            np.array(Xc_values.append([xc_2]))
+                            np.array(Yc_values.append([yc_2]))
                             
                     RadioArray=np.array(Rvalues)    
                     MeanRadio= np.mean(RadioArray)
+                    MeanXc=np.mean(Xc_values)
+                    MeanYc=np.mean(Yc_values)
                             
                     
                     #Grafico comportamiento de R_0 a distintos apex
@@ -879,7 +908,7 @@ class Method:
                     #plt.savefig('segmentedDrop.png')
                     #plt.show()
 
-                    return meanGamma,stdGamma,MeanRadio,BondNumber  #,DeYlenght[0,0]
+                    return meanGamma,stdGamma,MeanRadio,BondNumber,MeanXc,MeanYc #,DeYlenght[0,0]
                 
                         
                         
@@ -910,11 +939,48 @@ class Method:
         R_0=round(GammaValues[2]*ratio,3)
         parameters=["Tension superficial: "+str(gamma)+" +/- "+str(stdgamma)+" [N/m]","Numero de Bond: "+str(bond),"Numero worht: "+str(wort),"Parametro de forma: "+str(shape_pam),"R_0: "+str(R_0)+" [m]"]
         
+
+        def contorno(surface,image,R_0,Xc,Yc,apexX,apexY):
+
+  
+            # Radius of circle
+            radius = 1
+            
+            # Blue color in BGR
+            color = (255, 0, 0)
+            
+            # Line thickness of 2 px
+            thickness = 1
+            
+            # Using cv2.circle() method
+            # Draw a circle with blue line borders of thickness of 2 px
+            for i in range(0,len(surface)):
+                center_coordinates=(surface[i][0],surface[i][1])
+                image = cv2.circle(image, center_coordinates, radius, color, thickness)
+
+            radius2=int(R_0)
+            color2=(0,255,0)
+            center_coordinates2=(int(Xc),int(Yc))
+            image=cv2.circle(image, center_coordinates2, radius2,color2, thickness)
+            image=cv2.circle(image, center_coordinates2, 6 ,color2, -1)
+
+            start_point=(int(Xc),int(Yc))
+            end_point=(apexX,apexY)
+            image = cv2.arrowedLine(image, start_point, end_point,color2, thickness) 
+            cv2.putText(image_output2, "R_0", (int(Xc)+10,int((apexY+int(Yc))/2)), font, fontScale, color2, thickness, cv2.LINE_AA)
+
+            
+            return image
+
+        image_output2=contorno(drop_points,image_output2,GammaValues[2],GammaValues[4],GammaValues[5],apex[0],apex[1])
+
         j=len(parameters)-1
         for i in range(20,141,30):
             org = (10, image.shape[0]-i)
-            cv2.putText(image_output, parameters[j], org, font, fontScale, color, thickness, cv2.LINE_AA)
+            cv2.putText(image_output2, parameters[j], org, font, fontScale, color, thickness, cv2.LINE_AA)
             j-=1
+
+        
 
         now=datetime.now()
         date="date_"+str(now.year)+"_"+str(now.month)+"_"+str(now.day)+"__hour_"+str(now.hour)+"_"+str(now.minute)+"_"+str(now.second)
@@ -944,7 +1010,7 @@ class Method:
                     f_object.close()
         save_Gamma=folder+"/Resultados/"+date+".png"
                 
-        cv2.imwrite(save_Gamma,image_output)
+        cv2.imwrite(save_Gamma,image_output2)
 
 
 

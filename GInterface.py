@@ -46,6 +46,7 @@ class GraphicInterface:
       self.Dens2=[]
       self.Thick=[]
       self.folder = []
+      self.moment=0
       
       myLabel = Label(frame,text= "Insert Data")
       myLabel.pack(padx=10,pady=10)
@@ -58,15 +59,17 @@ class GraphicInterface:
       
       self.Entry1 = Entry(frame,width=30, bd=1)
       self.Entry1.pack(pady=10)
-      self.Entry1.insert(0,float(1000))
+      #self.Entry1.insert(0,float(997.0))
+
       
       self.myLabel2 = Label(frame,text= "Environment Density [Kg/m3]:")
       self.myLabel2.pack(padx=10,pady=0)
-      self.button2=Hovertip(self.myLabel2,"Densidad del medio",hover_delay=0)
+      self.button2=Hovertip(self.myLabel2,"Densidad del medio en el cual se encuentra colgando la gota. Ej: si usted coloca la gota y el medio en el que se encuentra es el aire debe ingresar 1.23 pues la densidad del aire es 1.23[Kg/m3]",hover_delay=0)
    
       self.Entry2 = Entry(frame,width=30, bd=1)
       self.Entry2.pack(pady=10)
-      self.Entry2.insert(0,float(1002.9))
+      #self.Entry2.insert(0,float(1.23))
+
       
       
       self.myLabel3 = Label(frame,text= "Needle Thickness [G]:")
@@ -75,7 +78,8 @@ class GraphicInterface:
       
       self.Entry3 = Entry(frame,width=30, bd=1)
       self.Entry3.pack(pady=10)
-      self.Entry3.insert(0,float(0.7176))
+      #self.Entry3.insert(0,float(22))
+
       
       frame.pack(padx=100,pady=50)
 
@@ -104,12 +108,18 @@ class GraphicInterface:
           self.folder=os.path.dirname(frame.filename)
 
 
-          #print("Drop's Density:",self.Dens1)
-          #print("Needle's Density:",self.Dens2)
-          #print("Needle's Thickness:",self.Thick)              
+          print("Drop's Density:",self.Dens1)
+          print("Needle's Density:",self.Dens2)
+          print("Needle's Thickness:",self.Thick)              
           #print("Drop Coordinates:", self.Drop)
           #print("Needle Coordinates",self.Need)
+          #self.moment = 1
+          self.Entry1.config(state="disabled") 
+          self.Entry2.config(state="disabled") 
+          self.Entry3.config(state="disabled") 
           
+          self.button["state"] = DISABLED
+
           return self.Drop,self.Need,self.Image,self.Dens1,self.Dens2,self.Thick,self.folder
 
 
@@ -118,7 +128,14 @@ class GraphicInterface:
       
       
       self.button = Button(frame,text="Load Image", fg="black",command=CallBox)
-      self.button.pack(padx=10,pady=20)   
+      self.button.pack(padx=10,pady=20)
+
+      
+      #master.mainloop() 
+
+      #root2=Tk()
+      Button(master,text="Quit",command=master.destroy).pack()
+      master.mainloop()
       
 
 #Funcion para guardado y posterior manipulacion de todos los parametros iniciales       
@@ -129,7 +146,11 @@ def mainWindow():
     root.minsize(400, 100)
     app =GraphicInterface(root)
 
-    root.mainloop()  
+    #root.mainloop()
+
+    
+
+     
     
     DropCoords= np.array(app.Drop)
     NeedCoords=np.array(app.Need)
@@ -139,6 +160,7 @@ def mainWindow():
     Dens2 =app.Dens2
     Thick  =app.Thick
     folder =app.folder
+
 
     #print("cors",DropCoords)
     
