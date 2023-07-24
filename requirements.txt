@@ -10,3 +10,4 @@ numpy
 opencv-python
 tkinter-tooltip
 datetime
+python-csv
