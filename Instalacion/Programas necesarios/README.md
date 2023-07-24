@@ -85,6 +85,7 @@ Paso 4: En la siguiente ventana aprete "Next".
 ![git3](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/6a7a5524-129f-4398-a449-0fb28624e0f6)
 
 Paso 5: En la siguiente ventana verifique que se encuentren seleccionadas las opciones presentes en la siguiente imagen y luego aprete "Next".
+
 ![git4](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/2ec71e07-40a6-4761-bb43-25c5d7f65ca1)
 
 Paso 6: En la siguiente ventana verifique que no este seleccionado "Don´t create a Start Menu folder" y luego aprete "Next".
@@ -102,9 +103,11 @@ Paso 9: En la siguiente ventana verifique que solamente este seleccionado "Git f
 ![git8](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/c2506c58-a53b-4f76-bba3-70114b17d0c8)
 
 Paso 10: En la siguiente ventana verifique que solamente este seleccionado "Use bundled OpenSSH" y luego aprete "Next".
+
 ![git9](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/6c904e56-1183-410a-b698-99bbff059d8e)
 
 Paso 11: En la siguiente ventana verifique que solamente este seleccionado "Use the OpenSSL library" y luego aprete "Next".
+
 ![git10](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/b0d38f27-a55f-4b10-97ff-ffad7db6aabd)
 
 Paso 12: En la siguiente ventana verifique que solamente este seleccionado "Checkout Windows-style, commit Unix-style line endings" y luego aprete "Next".
@@ -112,9 +115,11 @@ Paso 12: En la siguiente ventana verifique que solamente este seleccionado "Chec
 ![git11](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/8c898924-880f-4fb0-bbde-2c641cb35019)
 
 Paso 13: En la siguiente ventana verifique que solamente este seleccionado "Use MinTTY (defaut terminal of MSYS2)" y luego aprete "Next".
+
 ![git12](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/cc0c1af3-1895-4673-aeca-1cf90b30b310)
 
 Paso 14: En la siguiente ventana verifique que solamente este seleccionado "Default (fast-forward or merge)" y luego aprete "Next".
+
 ![git13](https://github.com/OmarAEM/Scian_Drplets_Omar_Final/assets/115668053/e461a546-8e7d-410c-afda-bf2165b9cfa4)
 
 Paso 15: En la siguiente ventana verifique que solamente este seleccionado "Git Credential Manager" y luego aprete "Next".
