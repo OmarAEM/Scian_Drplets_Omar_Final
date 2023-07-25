@@ -29,8 +29,8 @@ class GraphicInterface:
 
       #Definicion de parametros iniciales para obtencion de tension superficial
       # Parametro                    Asociacion
-      #   Drop            area donde se encuentra la gota
-      #   Need            area donde se encuentra la aguja
+      #   Drop            area donde se encuentra la gota, explicacion de valores obtenidos desde la linea 75 de GeometricFunction
+      #   Need            area donde se encuentra la aguja, explicacion de valores obtenidos desde la linea 75 de GeometricFunction
       #   Image           imagen de la gota colgante que se utiliza
       #   Dens1           densidad de la gota [kg/m3]
       #   Dens2           densidad del medio [kg/m3]
@@ -89,15 +89,15 @@ class GraphicInterface:
       
       #Lectura de todos los parametros iniciales introducidos en la interface
       def CallBox():
-    
           
+          #Seleccion de imagen en carpeta
           frame.filename = filedialog.askopenfilename(initialdir = "Desktop",title = "Select Image",filetypes = ( ("all files","*.*") ,("bmp files","*.bmp"), ("jpeg files","*.jpg"), ("png files","*.png")  ))
           print(frame.filename)
           img = cv2.imread(frame.filename)
           img_Temp = img.copy()
           img_Temp2 = img.copy()
           
-          
+          #Generacion de ventanas, una para seleccionar el area de la gota y otra para la aguja
           self.Drop  = np.array(MouseClick.CallMouseClick(img_Temp, "Select drop Region And Press Enter"))   # ESTAS COORDENADAS DEBO GUARDAR
           self.Need  = np.array(MouseClick.CallMouseClick(img_Temp2,"Select Needle Region And Press Enter")) 
           self.Image=img
@@ -113,11 +113,10 @@ class GraphicInterface:
           #print("Needle's Thickness:",self.Thick)              
           #print("Drop Coordinates:", self.Drop)
           #print("Needle Coordinates",self.Need)
-          #self.moment = 1
+          #Deshabilitamos los input y carga de imagen una vez seleccionada las areas 
           self.Entry1.config(state="disabled") 
           self.Entry2.config(state="disabled") 
           self.Entry3.config(state="disabled") 
-          
           self.button["state"] = DISABLED
 
           return self.Drop,self.Need,self.Image,self.Dens1,self.Dens2,self.Thick,self.folder
@@ -130,10 +129,6 @@ class GraphicInterface:
       self.button = Button(frame,text="Load Image", fg="black",command=CallBox)
       self.button.pack(padx=10,pady=20)
 
-      
-      #master.mainloop() 
-
-      #root2=Tk()
       Button(master,text="Calculate",command=master.destroy).pack()
       master.mainloop()
       
@@ -145,13 +140,7 @@ def mainWindow():
     root.title("SCIAN-Lab's Drop Surface Tension Measurement Tool ")
     root.minsize(400, 100)
     app =GraphicInterface(root)
-
-    #root.mainloop()
-
-    
-
-     
-    
+   
     DropCoords= np.array(app.Drop)
     NeedCoords=np.array(app.Need)
     imageT =app.Image
@@ -160,9 +149,6 @@ def mainWindow():
     Dens2 =app.Dens2
     Thick  =app.Thick
     folder =app.folder
-
-
-    #print("cors",DropCoords)
     
     return DropCoords, NeedCoords, imageT,Dens1,Dens2,Thick,folder
 

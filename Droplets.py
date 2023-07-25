@@ -1,4 +1,4 @@
-#Droplets tool version 1.0.0
+#Droplets tool version 1.0.1
 
 import GInterface
 import GeometricFunction

@@ -35,6 +35,9 @@ from csv import writer
 
 #Ejecucion de la interfaz para obtener parametros iniciales de la gota
 #Coordenadas = GInterface.mainWindow()
+#Los parametros iniciales para que funcione Droplets tool se obtienen a partir de la interfaz disponible en GInterface
+#Method(Coordenadas)
+
 
 class Method:
     
@@ -118,7 +121,11 @@ class Method:
             edges = cv2.Canny(img,20,200)
             return edges
                        
+        #Contorno para realizar calculos                       
         edges =filterImage(GrayImage)
+
+        #Contorno para visualizacion final
+        edges_output = filterImage(image_output)
 
 
         #Dimensiones de la imagen 
@@ -128,9 +135,6 @@ class Method:
 
         #Obtencion del contorno de la aguja
         def getNeedle(size,img,needleArea,image):
-                    
-            #print("getNeedle function")
-            #print("This needle width")
 
             nix=needleArea[0]
             niy=needleArea[1]
@@ -156,9 +160,9 @@ class Method:
                 
         NeedleArray=getNeedle(size_x,edges,needleArea,GrayImage)
 
+
         #Obtencion del centro de la aguja
         def NeedleCenter(needleArray):
-            #print("NeedleCenter Function")
                     
             minNeedle = np.min(needleArray[:,0])
             maxNeedle = np.max(needleArray[:,0])
@@ -175,7 +179,6 @@ class Method:
             return centerNeedle
                 
         Ncenter = NeedleCenter(NeedleArray)
-
 
 
         # Buscamos la posicion x,aproximada, de la aguja tanto por su lado derecho, como izquierdo
@@ -199,19 +202,19 @@ class Method:
 
         edges =filterImage(GrayImage)
 
-        edges_output = filterImage(image_output)
+        
 
-
+        #Visualizacion de imagenes
         def showing(img,string):
             
                     plt.title(string)
                     plt.imshow(img,"gray")
                     plt.show()
-            
-#        showing(GrayImage,"Gray Image")
-#        showing(edges,"Edge detection Image")
 
 
+
+
+        #Finalmente de uso el detector de bordes canny para detectar el contorno de la gota, pero se deba implementado como detectar bordes con contorno activo
 
         #     (1)-----line_upper-----(2)
         #      |                      |  
@@ -286,13 +289,8 @@ class Method:
         #Verificacion de creacion correcta de forma inicial para snake
         #ShowInit(image,dropArea,needleArea)
 
-
-
-
-        #
         def useSnake(img,alphaValue,dropArea):
-            #print("useSnake function")
-                
+
             dix=dropArea[0]
             diy=dropArea[1]
             dex=dropArea[2]
@@ -324,8 +322,6 @@ class Method:
         #   snake = active_contour(gaussian(img, 3),init, alpha=alphaValue, beta=10, gamma=0.001,coordinates='rc') 
             snake = active_contour(gaussian(img, 3),rect_init, alpha=alphaValue, beta=10, gamma=0.001) 
                     
-
-
             #Visualizacion de snake generado       
             #fig = plt.figure()
             #ax=plt.subplot()
@@ -355,6 +351,8 @@ class Method:
 
         #print(GraySnake2)
        
+
+        #Estas son otras manera de calcular el area de la gota pero no se utilizaron en esta version
         #--------------REVISAR--------------#
         def AreaShoeLace(Array):
                     
@@ -390,9 +388,7 @@ class Method:
                     
             return poly1_area,poly2_area
                 #
-        #areas=poly(GraySnake1,GraySnake2)
-                
-                    
+        #areas=poly(GraySnake1,GraySnake2)                                
         #print("Valores Areas con Poly :",areas)
         #print("Valores Areas con shoe : ",GrayArea,edgeArea)
 
@@ -400,23 +396,18 @@ class Method:
 
         #Diametro de la aguja en pixeles
         def NeedleWidth(needleArray):
-            #print("NeedleWidth Function")
-                    
+
             needleSize = needleArray[:,0].size
-            diff = []
-                    
-            for i in range(0,needleSize-2,2):
-                        
-                np.array([diff.append([needleArray[i+1,0]-needleArray[i,0]])])
-                        
+
+            diff = []        
+            for i in range(0,needleSize-2,2):                        
+                np.array([diff.append([needleArray[i+1,0]-needleArray[i,0]])])                        
                 diffArray= np.array(diff)
-                absDiff = abs(diffArray)
-                        
-                realDiff =[]
-                        
+                absDiff = abs(diffArray)                        
+
+                realDiff =[]                        
                 for i in range(0,len(absDiff),1):
-                    if absDiff[i]>2:
-                                
+                    if absDiff[i]>2:                                
                         realDiff.append(absDiff[i])
                                 
             realDiff = np.array(realDiff)
@@ -425,26 +416,21 @@ class Method:
             return needleWidth
 
         Nwidth = NeedleWidth(NeedleArray)
-        #print("Needle width:",Nwidth,"Pixel Units")
+
 
 
         #Relacion [m] por pixel, para tranformar toda la informacion de pixeles a metros
         def Ratio(width):
-            #print("Ratio Function")
-                    
-            ratio = needleDiameter/width
-                    
+
+            ratio = needleDiameter/width                    
             return ratio
                 
         ratio = Ratio(Nwidth)
-        #print("ratio",ratio)
 
 
         #Obtencion de porcion de superficie inferior de la gota
         def getApex(imYsize,centerNeedle,needleArray,img,needleArea,dropArea):
-            #print("getApex Function:")
-                    
-                    
+
             dix=dropArea[0]  # drop inicial x
             diy=dropArea[1]  # drop inicial y
             dfx=dropArea[2]  # drop inicial x
@@ -455,31 +441,19 @@ class Method:
             niy=needleArea[1]
             nfx=needleArea[2]
             nfy=needleArea[3]
-                    
-                    
+                        
             apexPoint  = []
-
-            for y in range(diy+100,dfy,1):    
-                        
-                while img[y,centerNeedle]!=0:
-                            
-                    np.array([apexPoint.append([centerNeedle,y])])
-                            
+            for y in range(diy+100,dfy,1):                            
+                while img[y,centerNeedle]!=0:                            
+                    np.array([apexPoint.append([centerNeedle,y])])                            
                     break
-                        
-                        
-            apex = np.array(apexPoint)
-                
-            #print("apex,",apex)
+                                                
+            apex = np.array(apexPoint)                                    
                     
-                    
-            apexRegion=[]
-                    
-            for x in range(needleArray[0,0],needleArray[1,0],1):
-                        
+            apexRegion=[]                    
+            for x in range(needleArray[0,0],needleArray[1,0],1):                        
                 for y in range(apex[0,1]-3,apex[0,1]+3,1):        
-                    if edges[y,x]==255:
-                                
+                    if edges[y,x]==255:                                
                         np.array([apexRegion.append([x,y])])
                         apexRegionArray= np.array(apexRegion)
                                 
@@ -489,19 +463,13 @@ class Method:
             #plt.scatter(needleArray[:,0],needleArray[:,1])
             #plt.scatter(centerNeedle,needleArray[0,1],color ="red")
             #plt.scatter(apexRegionArray[:,0],apexRegionArray[:,1])
-                #   
-                    
-                    
+                       
             apexApex = np.max(apexRegionArray[:,1])
             apexSize = apexRegionArray[:,1].size
                     
-            apexPosition=[]
-                    
-            for x in range(0,apexSize,1):
-                        
-                        
-                if apexRegionArray[x,1]==apexApex:
-                            
+            apexPosition=[]                    
+            for x in range(0,apexSize,1):                                                
+                if apexRegionArray[x,1]==apexApex:                            
                     np.array([apexPosition.append([x])])
                     apexPositionArray=np.array(apexPosition)
                             
@@ -525,32 +493,25 @@ class Method:
         edges_2 =filterImage(GrayImage_2)        
         apex = getApex(size_y,Ncenter,NeedleArray,edges_2,needleArea,dropArea)
 
-        #print("apex position",apex[1])
-        #print("apex position",apex[0])
-
 
         #Obtencion de puntos que generan el contorno de la gota
         def surface_drop(surface,DropArea):
+
             dix=dropArea[0]  # drop inicial x
             diy=dropArea[1]  # drop inicial y
             dfx=dropArea[2]  # drop final   x
             dfy=dropArea[3]
 
             points=[]
-
             for i in range(dix,dfx):
                 for j in range(diy, dfy):
-
-                    if surface[j,i] == 255:         # coordenadas pertenecientes a la superficie de la gota
-                                        
+                    if surface[j,i] == 255:         # coordenadas pertenecientes a la superficie de la gota                                        
                                 np.array([points.append([i,j])])
             return points
 
         drop_points=surface_drop(edges_output,dropArea)
 
   
-
-
         #Calculo de volumen de la gota y area (para parametro de forma) de la gota 
 
         left_drop=[]
@@ -569,7 +530,6 @@ class Method:
 
         L_drop=[]
         R_drop=[]
-
 
         #Calculamos la coordenada X promedio por cada coordenada Y igual
         for j in range(dropArea[1],apex[1]+1):
@@ -599,19 +559,11 @@ class Method:
 
         L_drop=(L_drop*ratio)**2*np.pi*ratio
         R_drop=(R_drop*ratio)**2*np.pi*ratio
-  
-
         Volume_DropL=np.sum(L_drop)
         Volume_DropR=np.sum(R_drop)
 
         #Volumen en m^3
         Volume=(Volume_DropL+Volume_DropR)/2
-
-
-
-
-             
-
 
 
         #Obtencion de R_0 a partir del apex anterior, esto se utiliza para calcular el radio (R_0) asociado a una circunferencia producida por apex
@@ -623,34 +575,25 @@ class Method:
             diy=dropArea[1]  # drop inicial y
             dfx=dropArea[2]  # drop final   x
             dfy=dropArea[3]  # drop final   y
-                    
-                    
-            Distance = 68
-                    
+                        
+            Distance = 68      
             imYsize = snake[:,0].size
                     
             Xinicio = apex[0]-Distance
             Xfin    = apex[0]+Distance
                     
             surface=[]
-            for i in range(Xinicio,Xfin,1):
-                        
-                j =  dfy-2
-                        
-                while j > 0:
-                            
-                    if snake[j,i] == 255:         # coordenadas pertenecientes a la superficie de la gota
-                                
-                        np.array([surface.append([i,j])])
-                                
+            for i in range(Xinicio,Xfin,1):                        
+                j =  dfy-2                        
+                while j > 0:                            
+                    if snake[j,i] == 255:         # coordenadas pertenecientes a la superficie de la gota                                
+                        np.array([surface.append([i,j])])                                
                         break
                             
                     j -= 1
                             
             surface
-            surfaceArray=np.array(surface)
-                    
-                    
+            surfaceArray=np.array(surface)      
                     
             #Visualizacion de la superficie del apex        
             #plt.figure()
@@ -659,7 +602,6 @@ class Method:
             #plt.scatter(surfaceArray[:,0],surfaceArray[:,1])
             #plt.show()
                     
-
             #Obtencion del centro de la circunferencia de radio R_0, utilizando la superficie del apex seleccionado
             x =surfaceArray[:,0]
             y =surfaceArray[:,1]
@@ -681,29 +623,21 @@ class Method:
             Suuu2 = np.sum(u2**3)
             Svvv2 = np.sum(v2**3)
                     
-            A2 = np.array([ [ Suu2, Suv2 ], [Suv2, Svv2]])
-                    
+            A2 = np.array([ [ Suu2, Suv2 ], [Suv2, Svv2]])       
             B2 = np.array([ Suuu2 + Suvv2, Svvv2 + Suuv2 ])/2.0
             uc2, vc2 = np.linalg.solve(A2, B2)
 
             #Coordenada x,y del centro de la circunferencia de radio R_0
             xc_2 = x_m + uc2
             yc_2 = y_m + vc2
-
-                    
+      
             Ri_2     = np.sqrt((x-xc_2)**2 + (y-yc_2)**2)
             R_0      = np.mean(Ri_2)
-            
             residu_2 = np.sum((Ri_2-R_0)**2)
                
             return R_0,xc_2,yc_2
-
-                
+               
         Rvalues =getRadio2(edges,apex,dropArea,image)
-        #print(Rvalues)
-        #print("R_0",Rvalues[0])
-
-
 
 
         #Obtencion de tension superficial
@@ -718,98 +652,79 @@ class Method:
                     
                     
                     
-                    #A partir del centro de la circunfrencia obtenido anteriormente, se busca De y Ds asociados al parametro de forma, para 
-                    # posterior calculo del numero de Bond
+                    #A partir del centro de la circunfrencia obtenido anteriormente, se busca De y Ds asociados la relacion de forma, para 
+                    # posterior calculo del numero de Bond, en caso de dudas revisar diapostiva 5 de "Obtención tensión superficial mediante programaSCIAN-Lab´s Droplets tool" disponible en Droplets Omar Espinoza Mujica.pdf
                     Yinicio = int(yc_2)-100
-                    Yfin    = int(yc_2)+100
-                    
-                    Lone   = np.linspace(1,imXsize,imXsize)
-                
+                    Yfin    = int(yc_2)+100                    
+                    Lone   = np.linspace(1,imXsize,imXsize)                
                     lin  = Yinicio *np.ones((1,len(Lone)))
-                    lfin = Yfin*np.ones((1,len(Lone)))
-                
+                    lfin = Yfin*np.ones((1,len(Lone)))                
                     dropSide1 = []
-                    Xlimite = imXsize-30
-                    
-                    for i in range(Yinicio,Yfin,1):
-                        
-                        for j in range(150,Xlimite,1):
-                            
-                            if IMG[i,j] == 255:
-                                
-                                np.array([dropSide1.append([j,i])])
-                                
+                    Xlimite = imXsize-30           
+
+                    for i in range(Yinicio,Yfin,1):                        
+                        for j in range(150,Xlimite,1):                            
+                            if IMG[i,j] == 255:                                
+                                np.array([dropSide1.append([j,i])])                                
                                 break
-                
-                    
+                                    
                     dropSide1
-                    dropSideArray1 = np.array(dropSide1) 
-                    
+                    dropSideArray1 = np.array(dropSide1)                     
                     dropSide2 = []
                     Xlimite = imXsize-30
                     
-                    for i in range(Yinicio,Yfin,1):
-                        
-                        for j in range(150,Xlimite,1):
-                            
-                            jj = Xlimite-j
-                            
-                            if IMG[i,Xlimite-j] == 255:
-                                
-                                np.array([dropSide2.append([jj,i])])
-                                
+                    for i in range(Yinicio,Yfin,1):                        
+                        for j in range(150,Xlimite,1):                            
+                            jj = Xlimite-j                            
+                            if IMG[i,Xlimite-j] == 255:                                
+                                np.array([dropSide2.append([jj,i])])                                
                                 break
                                 
                     dropSide2
                     dropSideArray2 = np.array(dropSide2) 
-                    
+
+                    #Identificamos el punto inicial y final de De
                     Left= np.min(dropSideArray1[:,0])
                     Right=np.max(dropSideArray2[:,0])
-                    
                     resultLeft  = np.array(np.where(dropSideArray1 == Left))
                     resultRight = np.array(np.where(dropSideArray2 == Right))
-                    
-                    DeDistance  = Right-Left
-                    
+                    DeDistance  = Right-Left                    
                     DeYlenght = dropSideArray2[resultRight[0,0],1]*(np.ones((1,DeDistance+1)))
+                    Y_De=int(np.mean(DeYlenght))
+
+                    #Coordenada inicial y final de De 
+                    points_De=[(Right,Y_De),(Left,Y_De)]
                     DeXlenght =  np.linspace(Left,Right,DeDistance+1)
                     
-                    #print("Dey",DeYlenght[0,0])
                     
                     ApexOnes = apexFin[0]*np.ones((1,DeDistance+1))
                     ApexLine = np.linspace(apexFin[1], apexFin[1]-(DeDistance),DeDistance+1)
                     
-                    upSide1=[]
-                    
-                    for i in range(0,Xlimite,1):
-                        
-                        if edges[int(ApexLine[-1]),i]==255:
-                            
-                            np.array([upSide1.append([ApexLine[-1],i])])
-                            
+                    upSide1=[]                    
+                    for i in range(0,Xlimite,1):                        
+                        if edges[int(ApexLine[-1]),i]==255:                            
+                            np.array([upSide1.append([ApexLine[-1],i])])                            
                             break
                         
-                    upSide1Array = np.array(upSide1)
-                    
-                    upSide2=[]    
-                    
-                    for j in range(0,imXsize-10,1):
-                        
-                        if edges[int(ApexLine[-1]),Xlimite-j]==255:
-                            
-                            #print(edges[int(ApexLine[-1]),Xlimite-j])
-                            
-                            np.array([upSide2.append([[ApexLine[-1]],[Xlimite-j]])])
-                            
+                    upSide1Array = np.array(upSide1)                    
+
+                    upSide2=[]                        
+                    for j in range(0,imXsize-10,1):                        
+                        if edges[int(ApexLine[-1]),Xlimite-j]==255:                                            
+                            np.array([upSide2.append([[ApexLine[-1]],[Xlimite-j]])])                            
                             break
                         
-                    upSide2Array = np.array(upSide2)
-                    
+                    upSide2Array = np.array(upSide2)                                    
                     DsDistance = int((upSide2Array[0,1]-upSide1Array[0,1]))+1
+                    Y_Ds=upSide2Array[0,0]
+
+                    #Coordenada inicial y final de Ds 
+                    points_Ds=[(int(upSide1Array[0,1]),int(Y_Ds[0])),(int(upSide2Array[0,1][0]),int(Y_Ds[0]))]
+
                     dsOnes = int(ApexLine[-1])*np.ones((1,DsDistance))
                     dsLine = np.linspace(int(upSide2Array[0,1]),int(upSide1Array[0,1]),DsDistance)
                     
-                    
+                    #Calculamos Ds y De reales
                     DsReal=DsDistance*ratio
                     DeReal=DeDistance*ratio
                     DsDeReal = DsReal/DeReal
@@ -829,7 +744,7 @@ class Method:
                     
                     
                     #Expancion de apex, es decir, se utiliza una mayor superficie inferior de la gota para obtener los R_0 asociados a esos nuevos apex
-                    # onteniendo asi una amplia cantidad de R_0
+                    # onteniendo asi una amplia cantidad de R_0 , en caso de dudas revisar diapostiva 8 de "Obtención tensión superficial mediante programaSCIAN-Lab´s Droplets tool" disponible en Droplets Omar Espinoza Mujica.pdf
                     dl=[]
                     rangeValues = []
                     
@@ -856,29 +771,20 @@ class Method:
                         start2 = rangeArray[i,0]
                         end2   = rangeArray[i,1]
                         
-                        surfacePoints = []
-                        
-                        for ii in range(start2,end2,1):
-                        
+                        surfacePoints = []                        
+                        for ii in range(start2,end2,1):                        
                             j = dfy-2
-        #                    j =  imYsize-30
-                            
-                            while j > 0:
-                                
-                                if edges[j,ii] == 255:
-                                    
+                            while j > 0:                                
+                                if edges[j,ii] == 255:                                    
                                     surfacePoints.append([ii,j])
-                                    sf = np.array(surfacePoints)
-                                    
-                                    break
-                                
+                                    sf = np.array(surfacePoints)                                    
+                                    break                                
                                 j -= 1
                                 
                         for iii in range(0,1,1):
                             
                             x2 =sf[:,0]
                             y2 =sf[:,1]
-                            
                             
                             x2_m = np.mean(x2)
                             y2_m = np.mean(y2)
@@ -888,7 +794,6 @@ class Method:
                             
                             u2 = x2 - x2_m
                             v2 = y2 - y2_m
-                            
                             
                             Suv2  = np.sum(u2*v2)
                             Suu2  = np.sum(u2**2)
@@ -913,12 +818,12 @@ class Method:
                             np.array(Xc_values.append([xc_2]))
                             np.array(Yc_values.append([yc_2]))
                             
-                    RadioArray=np.array(Rvalues)    
+                    RadioArray=np.array(Rvalues)   
                     MeanRadio= np.mean(RadioArray)
+                    stdRadio  = np.std(RadioArray)
                     MeanXc=np.mean(Xc_values)
                     MeanYc=np.mean(Yc_values)
                             
-                    
                     #Grafico comportamiento de R_0 a distintos apex
                     #plt.figure()
                     #plt.title("Radios de curvatura")
@@ -929,12 +834,10 @@ class Method:
                     #plt.show()
                     
 
-
                     #Calculo del gamma promedio a partir de todos los radios R_0 obtenidos                     
                     Gamma = []
                     
-                    for i in range(0,RangeSize,1):
-                        
+                    for i in range(0,RangeSize,1):                        
                         G = ((Density*np.square(RadioArray[i]*ratio)*g)/(BondNumber))*1000
                         np.array([Gamma.append([G])])
                             
@@ -957,8 +860,6 @@ class Method:
                     print("------------------------------------------------------------------------------")
                     print("")
 
-                   
-
                     #Visualizacion de Ds, De y apex      
                     #plt.figure()
                     #plt.title("Segmented Droplet")
@@ -971,12 +872,11 @@ class Method:
                     #plt.savefig('segmentedDrop.png')
                     #plt.show()
 
-                    return meanGamma,stdGamma,MeanRadio,BondNumber,MeanXc,MeanYc #,DeYlenght[0,0]
+                    return meanGamma,stdGamma,MeanRadio,BondNumber,MeanXc,MeanYc,points_De,points_Ds,stdRadio
                 
                         
                         
         GammaValues = getGamma(Rvalues[0],Rvalues[2],size_x,size_y,apex,edges,dropArea,diff_density)
-        #print("GammaValues",GammaValues)
                 
                 
         print("")
@@ -984,30 +884,29 @@ class Method:
         print("--------------------------------------------------------------")
 
 
-        
+        #Volumen maximo permitido de la gota, en caso de dudas revisar diapositiva 7 de "Obtención tensión superficial mediante programaSCIAN-Lab´s Droplets tool" disponible en Droplets Omar Espinoza Mujica.pdf
         max_volume=np.pi*needleDiameter*(GammaValues[0]/1000)/(diff_density*g)
-
-        edgeArea=1
         Worthington_Number=Volume/max_volume
+
+        #Parametro de forma, en caso de dudas revisar diapostiva 7 de "Obtención tensión superficial mediante programaSCIAN-Lab´s Droplets tool" disponible en Droplets Omar Espinoza Mujica.pdf      
         Shape_parameter=(Area-np.pi*GammaValues[2]**2)/Area
 
-
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        fontScale = 1
-        color = (255, 0, 0)
-        thickness = 2
-        gamma=round(GammaValues[0],3)
-        stdgamma=round(GammaValues[1],3)
-        bond=round(GammaValues[3],3)
-        wort=round(Worthington_Number,3)
-        shape_pam=round(Shape_parameter,3)
-        R_0=round(GammaValues[2]*ratio,3)
-        parameters=["Superficial tension: "+str(gamma)+" +/- "+str(stdgamma)+" [mN/m]","Bond number: "+str(bond),"Worthington number: "+str(wort),"Shape parameter: "+str(shape_pam)]
+        #Parametros obtenidos junto a sus errores
+        gamma=round(GammaValues[0],3)               #Tension superficial
+        stdgamma=round(GammaValues[1],3)            #Std Tension superficial
+        bond=round(GammaValues[3],3)                #Numero de Bond
+        worth=round(Worthington_Number,3)           #Numero de Worthington
+        shape_pam=round(Shape_parameter,3)          #Parametro de forma
+        R0=round(GammaValues[2]*ratio*1000,5)       #R0 
+        stdR0=round(GammaValues[8]*ratio*1000,5)    #Std R0
+        parameters=["Surface tension: "+str(gamma)+" +/- "+str(stdgamma)+" [mN/m]","Bond number: "+str(bond),"Worthington number: "+str(worth),"Shape parameter: "+str(shape_pam),"R0: "+str(R0)+" +/- "+str(stdR0)+" [mm]"]
         
-        #Dibujamos en la imagen el cortorno detectado y R_0 con su correspondiente circunferencia
-        def contour(surface,image,R_0,Xc,Yc,apexX,apexY):
+        #Dibujamos en la imagen el contorno detectado, R_0 con su correspondiente circunferencia; ademas de De y Ds utilizados
+        def contour(surface,image,R_0,Xc,Yc,apexX,apexY,points_De,points_Ds):
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            fontScale = 1
             radius = 1
-            color = (255, 0, 0)
+            color = (0, 0, 255)
             thickness = 1
             for i in range(0,len(surface)):
                 center_coordinates=(surface[i][0],surface[i][1])
@@ -1018,20 +917,30 @@ class Method:
             center_coordinates2=(int(Xc),int(Yc))
             image=cv2.circle(image, center_coordinates2, radius2,color2, thickness)
             image=cv2.circle(image, center_coordinates2, 6 ,color2, -1)
+            color3=(0,255,255)
 
             start_point=(int(Xc),int(Yc))
             end_point=(apexX,apexY)
+            cv2.line(image,points_Ds[0],points_Ds[1],color3,thickness)
+            cv2.line(image,points_De[0],points_De[1],color3,thickness)
             image = cv2.arrowedLine(image, start_point, end_point,color2, thickness) 
-            cv2.putText(image_output2, "R_0", (int(Xc)+10,int((apexY+int(Yc))/2)), font, fontScale, color2, thickness, cv2.LINE_AA)
+            cv2.putText(image_output2, "R0", (int(Xc)+10,int((apexY+int(Yc))/2)), font, fontScale, color2, thickness, cv2.LINE_AA)
+            cv2.putText(image, "De", (int((int(Xc)+points_De[0][0])/2)-10,points_De[0][1]-10),font, fontScale, color3, thickness, cv2.LINE_AA)
+            cv2.putText(image, "Ds", (int((int(Xc)+points_Ds[1][0])/2)-10,points_Ds[1][1]-10),font, fontScale, color3, thickness, cv2.LINE_AA)
 
             
             return image
-        image_output2=contour(drop_points,image_output2,GammaValues[2],GammaValues[4],GammaValues[5],apex[0],apex[1])
+        
+        image_output2=contour(drop_points,image_output2,GammaValues[2],GammaValues[4],GammaValues[5],apex[0],apex[1],GammaValues[6],GammaValues[7])
 
 
         #Guardamos los parametros dentro de la imagen
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        fontScale = 1
+        color = (255, 0, 0)
+        thickness = 2
         j=len(parameters)-1
-        for i in range(20,111,30):
+        for i in range(20,141,30):
             org = (10, image.shape[0]-i)
             cv2.putText(image_output2, parameters[j], org, font, fontScale, color, thickness, cv2.LINE_AA)
             j-=1
@@ -1054,16 +963,16 @@ class Method:
         
         #Si esta vacia creo un archivo .csv para guardar la informacion relevante
         if total_folder == 0:
-            d = {"Fecha":[date2],"Hora":[hour],'Tension superficial': [gamma], 'error tension': [stdgamma],"Numero de Bond": [bond], "Numero worht: ":[wort],"Parametro de forma: ":[shape_pam],"R_0: ":[R_0]}
+            d = {"Fecha":[date2],"Hora":[hour],'Tension superficial': [gamma], 'error tension': [stdgamma],"Numero de Bond": [bond], "Numero worht: ":[worth],"Parametro de forma: ":[shape_pam],"R_0: ":[R0]}
             df = pd.DataFrame(data=d)
-            df.to_csv(folder+'/Resultados/Result.csv')
+            df.to_csv(folder+'/Resultados/Results.csv')
         
         #Si hay archivos, significa que ya esta creado el archivo .csv y se prodece a escribir los parametros dentro del archivo
         if total_folder != 0:
-                df2=pd.read_csv(folder+'/Resultados/Result.csv')
+                df2=pd.read_csv(folder+'/Resultados/Results.csv')
                 index=df2.shape[0]
-                list_data=[index,date2,hour,gamma,stdgamma,bond,wort,shape_pam,R_0]
-                with open(folder+'/Resultados/Result.csv', 'a', newline='') as f_object:  
+                list_data=[index,date2,hour,gamma,stdgamma,bond,worth,shape_pam,R0]
+                with open(folder+'/Resultados/Results.csv', 'a', newline='') as f_object:  
                     # Pass the CSV  file object to the writer() function
                     writer_object = writer(f_object)
                     writer_object.writerow(list_data)  
