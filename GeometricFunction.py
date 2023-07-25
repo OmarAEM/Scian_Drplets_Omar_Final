@@ -1002,7 +1002,7 @@ class Method:
         wort=round(Worthington_Number,3)
         shape_pam=round(Shape_parameter,3)
         R_0=round(GammaValues[2]*ratio,3)
-        parameters=["Superficial tension: "+str(gamma)+" +/- "+str(stdgamma)+" [N/m]","Bond number: "+str(bond),"Worthington number: "+str(wort),"Shape parameter: "+str(shape_pam)]
+        parameters=["Superficial tension: "+str(gamma)+" +/- "+str(stdgamma)+" [mN/m]","Bond number: "+str(bond),"Worthington number: "+str(wort),"Shape parameter: "+str(shape_pam)]
         
         #Dibujamos en la imagen el cortorno detectado y R_0 con su correspondiente circunferencia
         def contour(surface,image,R_0,Xc,Yc,apexX,apexY):

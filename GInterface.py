@@ -134,7 +134,7 @@ class GraphicInterface:
       #master.mainloop() 
 
       #root2=Tk()
-      Button(master,text="Quit",command=master.destroy).pack()
+      Button(master,text="Calculate",command=master.destroy).pack()
       master.mainloop()
       
 
