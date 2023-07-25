@@ -1,0 +1,1 @@
+En esta carpeta se encontrara una presentacion realizada por Omar Espinoza Mujica el 25/07/2023 donde se expone como funciona Droplets tool. Ademas de presentacion del 05/05/2023 para interiorizarse con el tema de gota colgante.
