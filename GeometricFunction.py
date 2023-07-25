@@ -176,6 +176,8 @@ class Method:
                 
         Ncenter = NeedleCenter(NeedleArray)
 
+
+
         # Buscamos la posicion x,aproximada, de la aguja tanto por su lado derecho, como izquierdo
         NeedleArray_left = []
         NeedleArray_right = []
@@ -341,9 +343,9 @@ class Method:
         print("------------------------------------------------------------------------------")
         print("Calculando contorno de la gota")
         print("Proceso 0/2 completado")   
-        GraySnake1 = useSnake(GrayImage,0.010,dropArea)
+        #GraySnake1 = useSnake(GrayImage,0.010,dropArea)
         print("Proceso 1/2 completado") 
-        GraySnake2 = useSnake(edges,0.010,dropArea)
+        #GraySnake2 = useSnake(edges,0.010,dropArea)
         print("Proceso 2/2 completado") 
         print("------------------------------------------------------------------------------")
         print("")
@@ -351,7 +353,7 @@ class Method:
 
         print("A continuacion se indicaran los resultados obtenidos")
 
-        print(GraySnake2)
+        #print(GraySnake2)
        
         #--------------REVISAR--------------#
         def AreaShoeLace(Array):
@@ -374,7 +376,7 @@ class Method:
             return Area
  
         #GrayArea = AreaShoeLace(GraySnake1)
-        edgeArea = AreaShoeLace(GraySnake2)
+        #edgeArea = AreaShoeLace(GraySnake2)
         #print("Areas de ambas segmentaciones : ",GrayArea,edgeArea)
 
         #--------------REVISAR--------------#
@@ -523,10 +525,11 @@ class Method:
         edges_2 =filterImage(GrayImage_2)        
         apex = getApex(size_y,Ncenter,NeedleArray,edges_2,needleArea,dropArea)
 
-        print("apex position",apex[1])
-        print("apex position",apex[0])
+        #print("apex position",apex[1])
+        #print("apex position",apex[0])
 
 
+        #Obtencion de puntos que generan el contorno de la gota
         def surface_drop(surface,DropArea):
             dix=dropArea[0]  # drop inicial x
             diy=dropArea[1]  # drop inicial y
@@ -545,10 +548,74 @@ class Method:
 
         drop_points=surface_drop(edges_output,dropArea)
 
+  
+
+
+        #Calculo de volumen de la gota y area (para parametro de forma) de la gota 
+
+        left_drop=[]
+        left_dropY=[]
+        right_drop=[]
+        right_dropY=[]
+
+        #Se agruparan los puntos a la izquierda y derecha del vertice encontrado
+        for i in range(0,len(drop_points)):
+             if drop_points[i][0]<apex[0]:
+                  left_drop.append(drop_points[i])
+                  left_dropY.append(drop_points[i][1])
+             else:   
+                  right_drop.append(drop_points[i])
+                  right_dropY.append(drop_points[i][1])
+
+        L_drop=[]
+        R_drop=[]
+
+
+        #Calculamos la coordenada X promedio por cada coordenada Y igual
+        for j in range(dropArea[1],apex[1]+1):
+             index_L=[indice for indice, dato in enumerate(left_dropY) if dato == j]
+             index_R=[indice for indice, dato in enumerate(right_dropY) if dato == j]
+             if len(index_L)!=0:
+                  meanL=[]
+                  for i in range(0,len(index_L)):
+                       meanL.append(left_drop[index_L[i]][0])
+                  meanL=np.mean(np.array(meanL))
+                  L_drop.append(meanL)
+             if len(index_R)!=0:
+                  meanR=[]
+                  for i in range(0,len(index_R)):
+                       meanR.append(right_drop[index_R[i]][0])
+                  meanR=np.mean(np.array(meanR))
+                  R_drop.append(meanR)
+
+        #Calculamos distancia desde X del vertice y X de los contornos
+        L_drop=apex[0]-np.array(L_drop)
+        R_drop=np.array(R_drop)-apex[0]
+
+        #Area en pixeles
+        Area_L=np.sum(L_drop)
+        Area_R=np.sum(R_drop)
+        Area=(Area_L+Area_R)
+
+        L_drop=(L_drop*ratio)**2*np.pi*ratio
+        R_drop=(R_drop*ratio)**2*np.pi*ratio
+  
+
+        Volume_DropL=np.sum(L_drop)
+        Volume_DropR=np.sum(R_drop)
+
+        #Volumen en m^3
+        Volume=(Volume_DropL+Volume_DropR)/2
+
+
+
+
+             
+
 
 
         #Obtencion de R_0 a partir del apex anterior, esto se utiliza para calcular el radio (R_0) asociado a una circunferencia producida por apex
-        def getRadio2(snake,apex,DropArea,image,gray,snake2,snake3):
+        def getRadio2(snake,apex,DropArea,image):
                     
             dropArea=DropArea
                     
@@ -631,12 +698,8 @@ class Method:
                
             return R_0,xc_2,yc_2
 
-        GrayImage_3 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY )
-        edges_3 =filterImage(GrayImage_3)
-        GrayImage_4 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY )
-        edges_4 =filterImage(GrayImage_4)
                 
-        Rvalues =getRadio2(edges,apex,dropArea,image,GraySnake2,edges_3,edges_4)
+        Rvalues =getRadio2(edges,apex,dropArea,image)
         #print(Rvalues)
         #print("R_0",Rvalues[0])
 
@@ -921,11 +984,13 @@ class Method:
         print("--------------------------------------------------------------")
 
 
-
         
+        max_volume=np.pi*needleDiameter*(GammaValues[0]/1000)/(diff_density*g)
 
-        Worthington_Number=edgeArea*np.pi*ratio
-        Shape_parameter=(edgeArea-np.pi*GammaValues[2])/edgeArea
+        edgeArea=1
+        Worthington_Number=Volume/max_volume
+        Shape_parameter=(Area-np.pi*GammaValues[2]**2)/Area
+
 
         font = cv2.FONT_HERSHEY_SIMPLEX
         fontScale = 1
@@ -937,23 +1002,13 @@ class Method:
         wort=round(Worthington_Number,3)
         shape_pam=round(Shape_parameter,3)
         R_0=round(GammaValues[2]*ratio,3)
-        parameters=["Tension superficial: "+str(gamma)+" +/- "+str(stdgamma)+" [N/m]","Numero de Bond: "+str(bond),"Numero worht: "+str(wort),"Parametro de forma: "+str(shape_pam),"R_0: "+str(R_0)+" [m]"]
+        parameters=["Superficial tension: "+str(gamma)+" +/- "+str(stdgamma)+" [N/m]","Bond number: "+str(bond),"Worthington number: "+str(wort),"Shape parameter: "+str(shape_pam)]
         
-
-        def contorno(surface,image,R_0,Xc,Yc,apexX,apexY):
-
-  
-            # Radius of circle
+        #Dibujamos en la imagen el cortorno detectado y R_0 con su correspondiente circunferencia
+        def contour(surface,image,R_0,Xc,Yc,apexX,apexY):
             radius = 1
-            
-            # Blue color in BGR
             color = (255, 0, 0)
-            
-            # Line thickness of 2 px
             thickness = 1
-            
-            # Using cv2.circle() method
-            # Draw a circle with blue line borders of thickness of 2 px
             for i in range(0,len(surface)):
                 center_coordinates=(surface[i][0],surface[i][1])
                 image = cv2.circle(image, center_coordinates, radius, color, thickness)
@@ -971,34 +1026,39 @@ class Method:
 
             
             return image
+        image_output2=contour(drop_points,image_output2,GammaValues[2],GammaValues[4],GammaValues[5],apex[0],apex[1])
 
-        image_output2=contorno(drop_points,image_output2,GammaValues[2],GammaValues[4],GammaValues[5],apex[0],apex[1])
 
+        #Guardamos los parametros dentro de la imagen
         j=len(parameters)-1
-        for i in range(20,141,30):
+        for i in range(20,111,30):
             org = (10, image.shape[0]-i)
             cv2.putText(image_output2, parameters[j], org, font, fontScale, color, thickness, cv2.LINE_AA)
             j-=1
 
         
-
+        #Guardamos la fecha actual
         now=datetime.now()
         date="date_"+str(now.year)+"_"+str(now.month)+"_"+str(now.day)+"__hour_"+str(now.hour)+"_"+str(now.minute)+"_"+str(now.second)
 
         date2=str(now.year)+"_"+str(now.month)+"_"+str(now.day)
         hour=str(now.hour)+":"+str(now.minute)+":"+str(now.second)
 
-        #Guardo informacion de la imagen junto a su tension superficial en la carpeta resultados
+        #Reviso si la carpeta Resultados esta vacia o no
         total_folder = 0
         dir = folder+"/Resultados/"
         for path in os.listdir(dir):
             if os.path.isfile(os.path.join(dir, path)):
                 total_folder += 1
 
+        
+        #Si esta vacia creo un archivo .csv para guardar la informacion relevante
         if total_folder == 0:
             d = {"Fecha":[date2],"Hora":[hour],'Tension superficial': [gamma], 'error tension': [stdgamma],"Numero de Bond": [bond], "Numero worht: ":[wort],"Parametro de forma: ":[shape_pam],"R_0: ":[R_0]}
             df = pd.DataFrame(data=d)
             df.to_csv(folder+'/Resultados/Result.csv')
+        
+        #Si hay archivos, significa que ya esta creado el archivo .csv y se prodece a escribir los parametros dentro del archivo
         if total_folder != 0:
                 df2=pd.read_csv(folder+'/Resultados/Result.csv')
                 index=df2.shape[0]
@@ -1008,8 +1068,10 @@ class Method:
                     writer_object = writer(f_object)
                     writer_object.writerow(list_data)  
                     f_object.close()
-        save_Gamma=folder+"/Resultados/"+date+".png"
-                
+
+        
+        #Guardamos la imagen junto al contorno, R_0 y parametros obtenidos en la carpeta resultados
+        save_Gamma=folder+"/Resultados/"+date+".png"        
         cv2.imwrite(save_Gamma,image_output2)
 
 

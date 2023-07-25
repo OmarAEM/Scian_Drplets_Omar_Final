@@ -108,9 +108,9 @@ class GraphicInterface:
           self.folder=os.path.dirname(frame.filename)
 
 
-          print("Drop's Density:",self.Dens1)
-          print("Needle's Density:",self.Dens2)
-          print("Needle's Thickness:",self.Thick)              
+          #print("Drop's Density:",self.Dens1)
+          #print("Needle's Density:",self.Dens2)
+          #print("Needle's Thickness:",self.Thick)              
           #print("Drop Coordinates:", self.Drop)
           #print("Needle Coordinates",self.Need)
           #self.moment = 1
